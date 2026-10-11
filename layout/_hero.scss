@@ -1,0 +1,205 @@
+// layout/_hero.scss
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.hero {
+  background: $gradient-hero;
+  padding: $spacing-4xl 0 $spacing-3xl;
+  position: relative;
+  overflow: hidden;
+
+  // Họa tiết trang trí mờ phía sau
+  &::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero__grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: $spacing-3xl;
+    align-items: center;
+
+    @include respond-to("lg") {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: $spacing-2xl;
+    }
+  }
+
+  // Khối nội dung bên trái
+  .hero__content {
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(79, 70, 229, 0.1);
+      border: 1px solid rgba(79, 70, 229, 0.2);
+      color: $color-primary;
+      font-size: $font-size-xs;
+      font-weight: $font-weight-bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 6px 14px;
+      border-radius: $radius-full;
+      margin-bottom: $spacing-lg;
+    }
+
+    .hero__title {
+      font-size: $font-size-hero;
+      line-height: 1.15;
+      font-weight: $font-weight-extrabold;
+      color: $color-dark;
+      margin-bottom: $spacing-lg;
+
+      @include respond-to("md") {
+        font-size: $font-size-3xl;
+      }
+    }
+
+    .hero__desc {
+      font-size: $font-size-lg;
+      color: $color-muted;
+      line-height: 1.6;
+      margin-bottom: $spacing-2xl;
+      max-width: 540px;
+
+      @include respond-to("lg") {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    .hero__actions {
+      display: flex;
+      gap: $spacing-md;
+      flex-wrap: wrap;
+
+      @include respond-to("lg") {
+        justify-content: center;
+      }
+    }
+
+    .hero__trust {
+      margin-top: $spacing-2xl;
+      display: flex;
+      align-items: center;
+      gap: $spacing-md;
+
+      @include respond-to("lg") {
+        justify-content: center;
+      }
+
+      &-text {
+        font-size: $font-size-xs;
+        color: $color-muted;
+        font-weight: $font-weight-medium;
+      }
+    }
+  }
+
+  // Khối hình ảnh / demo bên phải
+  .hero__visual {
+    position: relative;
+
+    .hero__card {
+      background: $color-light;
+      border-radius: $radius-xl;
+      padding: $spacing-xl;
+      box-shadow: $shadow-xl;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      position: relative;
+      z-index: 2;
+
+      &-header {
+        @include flex-between;
+        margin-bottom: $spacing-lg;
+      }
+
+      &-tag {
+        font-size: $font-size-xs;
+        color: $color-success;
+        font-weight: $font-weight-bold;
+        background: #d1fae5;
+        padding: 4px 10px;
+        border-radius: $radius-full;
+      }
+
+      &-image-box {
+        background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+        border-radius: $radius-lg;
+        height: 240px;
+        @include flex-center;
+        margin-bottom: $spacing-lg;
+        overflow: hidden;
+
+        svg, img {
+          max-height: 80%;
+          transition: transform 0.3s ease;
+        }
+
+        &:hover svg, &:hover img {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    // Thẻ nổi số liệu ấn tượng
+    .hero__floating-card {
+      position: absolute;
+      background: $color-light;
+      border-radius: $radius-lg;
+      padding: 12px 18px;
+      box-shadow: $shadow-lg;
+      border: 1px solid $color-border;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 3;
+      animation: float 4s ease-in-out infinite;
+
+      &--rating {
+        bottom: -20px;
+        left: -20px;
+
+        @include respond-to("md") {
+          left: 10px;
+          bottom: -15px;
+        }
+      }
+
+      .floating-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: $radius-md;
+        background: #fef3c7;
+        color: #d97706;
+        @include flex-center;
+        font-size: 18px;
+      }
+
+      .floating-title {
+        font-size: $font-size-xs;
+        color: $color-muted;
+      }
+
+      .floating-val {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-bold;
+        color: $color-dark;
+      }
+    }
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}

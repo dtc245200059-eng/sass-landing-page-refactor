@@ -1,0 +1,165 @@
+// components/_cards.scss
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.card {
+  @include card-base;
+
+  // Card sản phẩm nổi bật
+  &--product {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .card__thumb {
+      position: relative;
+      background: #f1f5f9;
+      height: 220px;
+      @include flex-center;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+
+      .card__badge {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        font-size: 11px;
+        font-weight: $font-weight-bold;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: $radius-full;
+        color: $color-light;
+        background: $color-primary;
+        box-shadow: $shadow-sm;
+
+        &--hot {
+          background: #ef4444;
+        }
+
+        &--sale {
+          background: #f59e0b;
+        }
+
+        &--new {
+          background: #10b981;
+        }
+      }
+    }
+
+    &:hover .card__thumb img {
+      transform: scale(1.06);
+    }
+
+    .card__body {
+      padding: $spacing-lg;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card__category {
+      font-size: $font-size-xs;
+      color: $color-primary;
+      font-weight: $font-weight-semibold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: $spacing-xs;
+    }
+
+    .card__title {
+      font-size: $font-size-lg;
+      color: $color-dark;
+      margin-bottom: $spacing-xs;
+      @include text-truncate;
+    }
+
+    .card__rating {
+      @include flex(flex-start, center);
+      gap: 4px;
+      font-size: 13px;
+      color: $color-accent;
+      margin-bottom: $spacing-md;
+
+      .card__rating-count {
+        color: $color-muted;
+        font-size: 12px;
+        margin-left: 4px;
+      }
+    }
+
+    .card__footer {
+      margin-top: auto;
+      padding-top: $spacing-md;
+      border-top: 1px solid $color-border;
+      @include flex-between;
+    }
+
+    .card__price {
+      display: flex;
+      flex-direction: column;
+
+      &-current {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-bold;
+        color: $color-dark;
+      }
+
+      &-old {
+        font-size: $font-size-xs;
+        color: $color-muted;
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  // Card số liệu thống kê
+  &--stat {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    text-align: center;
+    padding: $spacing-2xl $spacing-xl;
+    border-radius: $radius-xl;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(6, 182, 212, 0.4);
+      transform: translateY(-6px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .card__icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto $spacing-lg;
+      border-radius: $radius-lg;
+      background: rgba(79, 70, 229, 0.2);
+      color: $color-secondary;
+      @include flex-center;
+      font-size: 26px;
+    }
+
+    .card__number {
+      font-size: $font-size-4xl;
+      font-weight: $font-weight-extrabold;
+      color: $color-light;
+      line-height: 1.1;
+      margin-bottom: $spacing-xs;
+      @include text-gradient($gradient-primary);
+    }
+
+    .card__label {
+      font-size: $font-size-sm;
+      color: #94a3b8;
+      font-weight: $font-weight-medium;
+    }
+  }
+}

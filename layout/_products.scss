@@ -1,0 +1,69 @@
+// layout/_products.scss
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.products {
+  background: $color-light;
+
+  // Thanh tab lọc phân loại
+  .products__filters {
+    @include flex(center, center);
+    gap: $spacing-sm;
+    margin-bottom: $spacing-3xl;
+    flex-wrap: wrap;
+
+    .products__tab {
+      padding: 8px 20px;
+      border-radius: $radius-full;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-semibold;
+      color: $color-muted;
+      background: $color-bg-page;
+      border: 1px solid $color-border;
+      cursor: pointer;
+      transition: $transition-fast;
+
+      &:hover {
+        color: $color-primary;
+        border-color: $color-primary-light;
+      }
+
+      &--active {
+        background: $color-primary;
+        color: $color-light;
+        border-color: $color-primary;
+        box-shadow: 0 4px 10px rgba(79, 70, 229, 0.25);
+
+        &:hover {
+          color: $color-light;
+        }
+      }
+    }
+  }
+
+  // Lưới hiển thị các thẻ sản phẩm nổi bật
+  .products__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $spacing-xl;
+
+    @include respond-to("xl") {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include respond-to("lg") {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $spacing-lg;
+    }
+
+    @include respond-to("sm") {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // Khối xem thêm phía dưới
+  .products__action {
+    text-align: center;
+    margin-top: $spacing-3xl;
+  }
+}

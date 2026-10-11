@@ -1,0 +1,103 @@
+// abstracts/_mixins.scss
+@use "variables" as *;
+
+// 1. Responsive Media Queries
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "sm" {
+    @media (max-width: #{$breakpoint-sm}) { @content; }
+  } @else if $breakpoint == "md" {
+    @media (max-width: #{$breakpoint-md}) { @content; }
+  } @else if $breakpoint == "lg" {
+    @media (max-width: #{$breakpoint-lg}) { @content; }
+  } @else if $breakpoint == "xl" {
+    @media (max-width: #{$breakpoint-xl}) { @content; }
+  } @else {
+    @media (min-width: #{$breakpoint}) { @content; }
+  }
+}
+
+// 2. Flexbox Helpers
+@mixin flex($justify: flex-start, $align: stretch, $direction: row, $wrap: nowrap) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// 3. Glassmorphism Effect
+@mixin glassmorphism($blur: 12px, $bg: rgba(255, 255, 255, 0.85)) {
+  background: $bg;
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+// 4. Gradient Text
+@mixin text-gradient($gradient: $gradient-primary) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+// 5. Button Base & Variants
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  font-family: $font-family-base;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  padding: 12px 24px;
+  border-radius: $radius-md;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// 6. Card Base Style
+@mixin card-base {
+  background: $color-light;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: $spacing-xl;
+  box-shadow: $shadow-sm;
+  transition: $transition-normal;
+
+  &:hover {
+    box-shadow: $shadow-xl;
+    transform: translateY(-4px);
+    border-color: rgba(79, 70, 229, 0.2);
+  }
+}
+
+// 7. Text Truncate
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

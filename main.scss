@@ -1,0 +1,20 @@
+// main.scss - Tái cấu trúc mã CSS Landing Page với kiến trúc SASS mô-đun hóa
+
+// 1. Abstracts
+@use "abstracts/variables";
+@use "abstracts/mixins";
+
+// 2. Base
+@use "base/reset";
+@use "base/typography";
+
+// 3. Components
+@use "components/buttons";
+@use "components/cards";
+
+// 4. Layout (4 phần bài tập Landing Page thiết kế sẵn)
+@use "layout/header";      // [Bài tập] Dựng navigation và header
+@use "layout/hero";        // Hero banner ấn tượng
+@use "layout/products";    // [Bài tập] Dựng phần sản phẩm nổi bật
+@use "layout/statistics";  // [Bài tập] Dựng phần số liệu thống kê
+@use "layout/footer";      // [Bài tập] Dựng phần footer

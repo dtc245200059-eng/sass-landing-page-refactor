@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AuraTech - Tái Cấu Trúc Landing Page Với SASS</title>
+  <meta name="description" content="Bài tập tái cấu trúc mã CSS của các bài tập Landing Page đã làm bằng kiến trúc SASS mô-đun hóa: Variables, Nesting, Mixins.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- File CSS biên dịch từ SCSS -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <style>
+    /* Thanh banner thông tin bài tập trên cùng */
+    .exercise-banner {
+      background: #1e1b4b;
+      color: #c7d2fe;
+      font-size: 13px;
+      padding: 10px 16px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .exercise-banner strong {
+      color: #38bdf8;
+    }
+    .exercise-banner a {
+      color: #a5f3fc;
+      text-decoration: underline;
+      margin-left: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Thanh thông tin bài nộp -->
+  <div class="exercise-banner">
+    🎯 <strong>[Bài tập] Tái cấu trúc mã CSS của các bài tập đã làm</strong> | Áp dụng SASS Variables, Nesting & Mixins vào 4 phần: Navigation/Header, Sản phẩm nổi bật, Thống kê, Footer.
+  </div>
+
+  <!-- =========================================================================
+       PHẦN 1: [BÀI TẬP] DỰNG NAVIGATION VÀ HEADER CỦA LANDING PAGE
+       ========================================================================= -->
+  <header class="header">
+    <div class="container header__container">
+      
+      <!-- Logo thương hiệu -->
+      <a href="#home" class="header__brand">
+        <div class="header__logo-icon">⚡</div>
+        <span>AuraTech</span>
+      </a>
+
+      <!-- Menu điều hướng -->
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li><a href="#home" class="header__nav-link header__nav-link--active">Trang Chủ</a></li>
+          <li><a href="#products" class="header__nav-link">Sản Phẩm Nổi Bật</a></li>
+          <li><a href="#statistics" class="header__nav-link">Số Liệu Thống Kê</a></li>
+          <li><a href="#features" class="header__nav-link">Ưu Điểm</a></li>
+          <li><a href="#contact" class="header__nav-link">Liên Hệ</a></li>
+        </ul>
+      </nav>
+
+      <!-- Tiện ích & Nút hành động -->
+      <div class="header__actions">
+        <a href="tel:19008888" class="header__phone">
+          <span>📞</span> 1900 8888
+        </a>
+        <a href="#products" class="btn btn--primary btn--sm">
+          Khám Phá Ngay
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Hero Banner (Đi kèm Header trong bài tập Navigation & Header) -->
+  <section class="hero" id="home">
+    <div class="container hero__grid">
+      
+      <div class="hero__content">
+        <div class="hero__badge">
+          <span>🚀</span> Công Nghệ Tiên Phong 2026
+        </div>
+        <h1 class="hero__title">
+          Hệ Sinh Thái Thiết Bị <span class="text-gradient">Thông Minh & Đột Phá</span>
+        </h1>
+        <p class="hero__desc">
+          Trải nghiệm các sản phẩm công nghệ cao cấp nhất với hiệu năng vượt trội, 
+          thiết kế tinh xảo và giải pháp trí tuệ nhân tạo thế hệ mới nâng tầm cuộc sống của bạn.
+        </p>
+
+        <div class="hero__actions">
+          <a href="#products" class="btn btn--gradient btn--lg">
+            Xem Sản Phẩm <span class="btn__icon">→</span>
+          </a>
+          <a href="#statistics" class="btn btn--outline btn--lg">
+            Xem Thành Tựu
+          </a>
+        </div>
+
+        <div class="hero__trust">
+          <span style="color: #f59e0b; font-size: 16px;">★★★★★</span>
+          <span class="hero__trust-text">Được hơn <strong>150,000+</strong> khách hàng đánh giá 4.9/5 sao</span>
+        </div>
+      </div>
+
+      <!-- Khối mockup hiển thị visual bên phải -->
+      <div class="hero__visual">
+        <div class="hero__card">
+          <div class="hero__card-header">
+            <span style="font-size: 14px; font-weight: 700; color: #1e293b;">Aura Vision Pro AI</span>
+            <span class="hero__card-tag">MỚI RA MẮT</span>
+          </div>
+          
+          <div class="hero__card-image-box">
+            <!-- Minh họa thiết bị bằng SVG cao cấp -->
+            <svg width="180" height="180" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="30" y="20" width="140" height="160" rx="24" fill="#0f172a"/>
+              <rect x="40" y="30" width="120" height="140" rx="16" fill="url(#screenGrad)"/>
+              <circle cx="100" cy="85" r="32" fill="#4f46e5" fill-opacity="0.25"/>
+              <circle cx="100" cy="85" r="20" fill="url(#coreGrad)"/>
+              <rect x="60" y="130" width="80" height="8" rx="4" fill="#ffffff" fill-opacity="0.8"/>
+              <rect x="75" y="145" width="50" height="6" rx="3" fill="#ffffff" fill-opacity="0.4"/>
+              <defs>
+                <linearGradient id="screenGrad" x1="40" y1="30" x2="160" y2="170" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#1e1b4b"/>
+                  <stop offset="1" stop-color="#0f172a"/>
+                </linearGradient>
+                <linearGradient id="coreGrad" x1="80" y1="65" x2="120" y2="105" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#06b6d4"/>
+                  <stop offset="1" stop-color="#4f46e5"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-size: 12px; color: #64748b;">Giá khởi điểm</div>
+              <div style="font-size: 20px; font-weight: 800; color: #4f46e5;">24.990.000 ₫</div>
+            </div>
+            <a href="#products" class="btn btn--primary btn--sm">Đặt Trước</a>
+          </div>
+        </div>
+
+        <!-- Thẻ thống kê nổi (Floating achievement badge) -->
+        <div class="hero__floating-card hero__floating-card--rating">
+          <div class="floating-icon">⭐</div>
+          <div>
+            <div class="floating-title">Độ Hài Lòng Tuyệt Đối</div>
+            <div class="floating-val">99.8% Khách Hàng</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       PHẦN 2: [BÀI TẬP] DỰNG PHẦN SẢN PHẨM NỔI BẬT CỦA LANDING PAGE
+       ========================================================================= -->
+  <section class="section products" id="products">
+    <div class="container">
+      
+      <div class="section__header">
+        <span class="section__tag">Danh Mục Độc Quyền</span>
+        <h2 class="section__title">Sản Phẩm Nổi Bật Được Yêu Thích</h2>
+        <p class="section__subtitle">
+          Khám phá bộ sưu tập thiết bị cao cấp dẫn đầu xu hướng công nghệ năm 2026 với ưu đãi tốt nhất.
+        </p>
+      </div>
+
+      <!-- Bộ lọc phân loại -->
+      <div class="products__filters">
+        <button class="products__tab products__tab--active">Tất Cả Sản Phẩm</button>
+        <button class="products__tab">Điện Thoại AI</button>
+        <button class="products__tab">Laptop Hiệu Năng Cao</button>
+        <button class="products__tab">Đồng Hồ Thông Minh</button>
+        <button class="products__tab">Âm Thanh Đỉnh Cao</button>
+      </div>
+
+      <!-- Lưới sản phẩm nổi bật -->
+      <div class="products__grid">
+        
+        <!-- Sản phẩm 1 -->
+        <div class="card card--product">
+          <div class="card__thumb">
+            <span class="card__badge card__badge--hot">BÁN CHẠY</span>
+            <svg width="120" height="120" viewBox="0 0 100 100" fill="none">
+              <rect x="25" y="10" width="50" height="80" rx="8" fill="#1e293b"/>
+              <rect x="28" y="15" width="44" height="68" rx="4" fill="#3b82f6" fill-opacity="0.3"/>
+              <circle cx="50" cy="50" r="14" fill="#6366f1"/>
+            </svg>
+          </div>
+          <div class="card__body">
+            <div class="card__category">Smartphone</div>
+            <h3 class="card__title">Aura Phone Ultra 5G</h3>
+            <div class="card__rating">
+              <span>★★★★★</span>
+              <span class="card__rating-count">(4.9 - 1.2k đánh giá)</span>
+            </div>
+            <div class="card__footer">
+              <div class="card__price">
+                <span class="card__price-current">28.990.000 ₫</span>
+                <span class="card__price-old">32.990.000 ₫</span>
+              </div>
+              <button class="btn btn--primary btn--sm">Mua Ngay</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sản phẩm 2 -->
+        <div class="card card--product">
+          <div class="card__thumb">
+            <span class="card__badge card__badge--sale">GIẢM 20%</span>
+            <svg width="120" height="120" viewBox="0 0 100 100" fill="none">
+              <path d="M15 65L25 25H75L85 65H15Z" fill="#334155"/>
+              <rect x="10" y="65" width="80" height="8" rx="2" fill="#0f172a"/>
+              <rect x="28" y="30" width="44" height="30" fill="#06b6d4" fill-opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="card__body">
+            <div class="card__category">Laptop Pro</div>
+            <h3 class="card__title">AuraBook M3 Max 16"</h3>
+            <div class="card__rating">
+              <span>★★★★★</span>
+              <span class="card__rating-count">(5.0 - 840 đánh giá)</span>
+            </div>
+            <div class="card__footer">
+              <div class="card__price">
+                <span class="card__price-current">45.500.000 ₫</span>
+                <span class="card__price-old">52.000.000 ₫</span>
+              </div>
+              <button class="btn btn--primary btn--sm">Mua Ngay</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sản phẩm 3 -->
+        <div class="card card--product">
+          <div class="card__thumb">
+            <span class="card__badge card__badge--new">MỚI</span>
+            <svg width="120" height="120" viewBox="0 0 100 100" fill="none">
+              <rect x="42" y="10" width="16" height="80" rx="4" fill="#475569"/>
+              <rect x="30" y="30" width="40" height="40" rx="10" fill="#0f172a"/>
+              <circle cx="50" cy="50" r="14" fill="#10b981" fill-opacity="0.4"/>
+              <circle cx="50" cy="50" r="8" fill="#10b981"/>
+            </svg>
+          </div>
+          <div class="card__body">
+            <div class="card__category">Smartwatch</div>
+            <h3 class="card__title">Aura Watch Apex Titan</h3>
+            <div class="card__rating">
+              <span>★★★★★</span>
+              <span class="card__rating-count">(4.8 - 950 đánh giá)</span>
+            </div>
+            <div class="card__footer">
+              <div class="card__price">
+                <span class="card__price-current">9.490.000 ₫</span>
+                <span class="card__price-old">11.200.000 ₫</span>
+              </div>
+              <button class="btn btn--primary btn--sm">Mua Ngay</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sản phẩm 4 -->
+        <div class="card card--product">
+          <div class="card__thumb">
+            <span class="card__badge card__badge--hot">BÁN CHẠY</span>
+            <svg width="120" height="120" viewBox="0 0 100 100" fill="none">
+              <path d="M25 45C25 30 75 30 75 45" stroke="#0f172a" stroke-width="8" stroke-linecap="round"/>
+              <rect x="20" y="45" width="14" height="24" rx="6" fill="#6366f1"/>
+              <rect x="66" y="45" width="14" height="24" rx="6" fill="#6366f1"/>
+            </svg>
+          </div>
+          <div class="card__body">
+            <div class="card__category">Audio Studio</div>
+            <h3 class="card__title">Aura Sound ANC Studio</h3>
+            <div class="card__rating">
+              <span>★★★★★</span>
+              <span class="card__rating-count">(4.9 - 610 đánh giá)</span>
+            </div>
+            <div class="card__footer">
+              <div class="card__price">
+                <span class="card__price-current">6.890.000 ₫</span>
+                <span class="card__price-old">7.990.000 ₫</span>
+              </div>
+              <button class="btn btn--primary btn--sm">Mua Ngay</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="products__action">
+        <a href="#products" class="btn btn--outline btn--lg">
+          Xem Toàn Bộ 48+ Sản Phẩm <span class="btn__icon">→</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       PHẦN 3: [BÀI TẬP] DỰNG PHẦN SỐ LIỆU THỐNG KÊ CỦA LANDING PAGE
+       ========================================================================= -->
+  <section class="section statistics" id="statistics">
+    <div class="container">
+      
+      <div class="section__header">
+        <span class="section__tag">Bảo Chứng Uy Tín</span>
+        <h2 class="section__title">Những Con Số Thống Kê Ấn Tượng</h2>
+        <p class="section__subtitle">
+          Khẳng định vị thế hàng đầu trong lòng người tiêu dùng qua quá trình nỗ lực không ngừng.
+        </p>
+      </div>
+
+      <div class="statistics__grid">
+        
+        <!-- Thống kê 1 -->
+        <div class="card card--stat">
+          <div class="card__icon">👥</div>
+          <div class="card__number">150,000+</div>
+          <div class="card__label">Khách Hàng Cá Nhân & Doanh Nghiệp Tin Dùng</div>
+        </div>
+
+        <!-- Thống kê 2 -->
+        <div class="card card--stat">
+          <div class="card__icon">⭐</div>
+          <div class="card__number">99.8%</div>
+          <div class="card__label">Tỷ Lệ Đánh Giá Hài Lòng & Tích Cực Tuyệt Đối</div>
+        </div>
+
+        <!-- Thống kê 3 -->
+        <div class="card card--stat">
+          <div class="card__icon">⚡</div>
+          <div class="card__number">48 Giờ</div>
+          <div class="card__label">Giao Hàng Hỏa Tốc & Bảo Hành Tận Nhà Toàn Quốc</div>
+        </div>
+
+        <!-- Thống kê 4 -->
+        <div class="card card--stat">
+          <div class="card__icon">🛡️</div>
+          <div class="card__number">24/7</div>
+          <div class="card__label">Hỗ Trợ Kỹ Thuật Chuyên Sâu Cùng Chuyên Gia</div>
+        </div>
+
+      </div>
+
+      <!-- Banner cam kết dịch vụ -->
+      <div class="statistics__commitment">
+        <div class="statistics__commitment-text">
+          <h4>Cam Kết Chất Lượng Chính Hãng 100%</h4>
+          <p>Bảo hành 1 đổi 1 trong 30 ngày đầu tiên nếu phát sinh bất kỳ lỗi nào từ nhà sản xuất.</p>
+        </div>
+        <a href="#contact" class="btn btn--outline-light">
+          Tìm Hiểu Chính Sách
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       PHẦN 4: [BÀI TẬP] DỰNG PHẦN FOOTER CỦA LANDING PAGE
+       ========================================================================= -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      
+      <div class="footer__grid">
+        
+        <!-- Cột 1: Thương hiệu & Giới thiệu -->
+        <div class="footer__brand">
+          <a href="#home" class="footer__logo">
+            <div class="footer__logo-icon">⚡</div>
+            <span>AuraTech</span>
+          </a>
+          <p class="footer__desc">
+            Tiên phong cung cấp các giải pháp công nghệ cao cấp, thiết bị số thông minh 
+            và dịch vụ hỗ trợ toàn diện đạt chuẩn chất lượng quốc tế.
+          </p>
+          <div class="footer__socials">
+            <a href="https://facebook.com" class="social-link" title="Facebook">🌐</a>
+            <a href="https://youtube.com" class="social-link" title="YouTube">📺</a>
+            <a href="https://linkedin.com" class="social-link" title="LinkedIn">💼</a>
+            <a href="https://github.com" class="social-link" title="GitHub">🐙</a>
+          </div>
+        </div>
+
+        <!-- Cột 2: Đường dẫn nhanh -->
+        <div class="footer__col">
+          <h4 class="footer__title">Đường Dẫn Nhanh</h4>
+          <div class="footer__links">
+            <a href="#home">Trang Chủ</a>
+            <a href="#products">Sản Phẩm Mới</a>
+            <a href="#statistics">Thành Tựu & Thống Kê</a>
+            <a href="#products">Khuyến Mãi Đặc Biệt</a>
+            <a href="#contact">Hệ Thống Showroom</a>
+          </div>
+        </div>
+
+        <!-- Cột 3: Hỗ trợ khách hàng -->
+        <div class="footer__col">
+          <h4 class="footer__title">Hỗ Trợ & Chính Sách</h4>
+          <div class="footer__links">
+            <a href="#contact">Chính Sách Bảo Hành</a>
+            <a href="#contact">Quy Định Đổi Trả</a>
+            <a href="#contact">Hướng Dẫn Mua Hàng</a>
+            <a href="#contact">Chính Sách Bảo Mật</a>
+            <a href="#contact">Câu Hỏi Thường Gặp (FAQ)</a>
+          </div>
+        </div>
+
+        <!-- Cột 4: Đăng ký nhận tin -->
+        <div class="footer__col footer__newsletter">
+          <h4 class="footer__title">Nhận Ưu Đãi Độc Quyền</h4>
+          <p>Đăng ký email để nhận ngay voucher giảm giá 15% cho đơn hàng đầu tiên của bạn.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã đăng ký nhận tin từ AuraTech!');">
+            <input type="email" placeholder="Nhập email của bạn..." required>
+            <button type="submit" class="btn btn--primary btn--sm">Đăng Ký</button>
+          </form>
+          <div style="margin-top: 15px; font-size: 13px; color: #94a3b8;">
+            Hotline: <strong style="color: #38bdf8;">1900 8888</strong> (Miễn phí 24/7)
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Thanh bản quyền đáy trang -->
+      <div class="footer__bottom">
+        <div>
+          © 2026 <strong>AuraTech</strong>. Toàn bộ bản quyền được bảo lưu. Bài tập thực hiện bởi: <strong>dtc245200059-eng</strong>
+        </div>
+        <div class="footer__policy-links">
+          <a href="#contact">Điều Khoản Dịch Vụ</a>
+          <a href="#contact">Chính Sách Riêng Tư</a>
+          <a href="#contact">Sơ Đồ Trang Web</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>

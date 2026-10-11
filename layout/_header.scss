@@ -1,0 +1,100 @@
+// layout/_header.scss
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $header-height;
+  z-index: 1000;
+  @include glassmorphism(16px, rgba(255, 255, 255, 0.9));
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  transition: $transition-normal;
+
+  .header__container {
+    height: 100%;
+    @include flex-between;
+  }
+
+  // Logo thương hiệu
+  .header__brand {
+    @include flex(flex-start, center);
+    gap: 10px;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-extrabold;
+    color: $color-dark;
+
+    .header__logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: $radius-md;
+      background: $gradient-primary;
+      color: $color-light;
+      @include flex-center;
+      font-size: 20px;
+    }
+  }
+
+  // Menu điều hướng
+  .header__nav {
+    @include respond-to("lg") {
+      display: none;
+    }
+
+    &-list {
+      @include flex(center, center);
+      gap: $spacing-xl;
+    }
+
+    &-link {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      color: $color-body;
+      position: relative;
+      padding: 6px 0;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background: $color-primary;
+        transition: width 0.25s ease;
+      }
+
+      &:hover, &--active {
+        color: $color-primary;
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  // Khu vực tiện ích bên phải
+  .header__actions {
+    @include flex(flex-end, center);
+    gap: $spacing-md;
+
+    .header__phone {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-semibold;
+      color: $color-body;
+      @include flex(flex-start, center);
+      gap: 6px;
+
+      @include respond-to("md") {
+        display: none;
+      }
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+}
